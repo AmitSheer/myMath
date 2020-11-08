@@ -5,12 +5,14 @@ FILES= basicMath.c power.c
 OBJECTS_LIB= basicMath.o power.o
 
 .PHONY: all clean
+
 export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
+
 all: mains maind
-mains: libmyMath.a main.o
+mains: libmyMath.a main.o 
 	gcc $(FLAGS) -o mains.o main.o ./libmyMath.a 
 maind: libmyMath.so main.o
-	gcc $(FLAGS) -o maind.o main.c ./libmyMath.so
+	gcc $(FLAGS) -o maind.o main.o ./libmyMath.so
 #Ugliest thing i have ever done....
 mymaths: libmyMath.a
 mymathd: libmyMath.so	
