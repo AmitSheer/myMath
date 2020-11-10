@@ -10,9 +10,9 @@ export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
 
 all: mains maind
 mains: libmyMath.a main.o 
-	gcc $(FLAGS) -o mains.o main.o ./libmyMath.a 
+	gcc $(FLAGS) -o mains main.o ./libmyMath.a 
 maind: libmyMath.so main.o
-	gcc $(FLAGS) -o maind.o main.o ./libmyMath.so
+	gcc $(FLAGS) -o maind main.o ./libmyMath.so
 #Ugliest thing i have ever done....
 mymaths: libmyMath.a
 mymathd: libmyMath.so	
@@ -29,4 +29,4 @@ main.o: main.c myMath.h
 	$(CC) -c -o main.o main.c
 
 clean:
-	rm -f *.o *.a *.so
+	rm -f mains maind *.o *.a *.so
